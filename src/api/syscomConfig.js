@@ -1,10 +1,10 @@
 import axios from 'axios'
 
-const axiosInstance = axios.create({
+const syscomInstance = axios.create({
   baseURL: 'https://developers.syscom.mx/api/v1',
   headers: {
     'Content-Type': 'application/json',
   },
 })
 
-export default axiosInstance
+export default syscomInstance
