@@ -27,4 +27,12 @@ const getCategories = async()=>{
     }
 }
 
+const getCategoryItems = async(id)=>{
+    try {
+        const response = await apiInstance.get(`/categorias/${id}`)
+        return response.data
+    } catch (error) {
+        return error.response.data
+    }
+}
 module.exports = {getCategories, setAPIToken}

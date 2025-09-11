@@ -23,6 +23,11 @@ app.get("/categories", async(req,res)=>{
   const response = await getCategories()
   res.send(response)
 })
+app.get("/categories/:id",(req,res)=>{
+  const categoryID = req.params.id
+  
+  res.end()
+})
 app.listen(config.PORT, ()=>{
   console.log(`Server started on ${config.PORT}`)
 })
