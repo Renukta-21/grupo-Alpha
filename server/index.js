@@ -10,7 +10,7 @@ app.get("", (req,res)=>{
   res.send("Main route")
 })
 
-app.get("/api/token", async(req,res)=>{
+/* app.get("/api/token", async(req,res)=>{
   const response = await getToken()
   if(response.access_token) {
     token = response.access_token
@@ -18,7 +18,7 @@ app.get("/api/token", async(req,res)=>{
   }
   res.send(response)
 })
-
+ */
 app.get("/categories", async(req,res)=>{
   const response = await getCategories()
   res.send(response)
