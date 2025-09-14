@@ -1,11 +1,9 @@
 const express = require("express")
 const config = require("../server/config")
-const { getToken } = require("./api/auth")
-const { getCategories, setAPIToken } = require("./api/syscomAPI")
+const { getCategories, setAPIToken, getCategoryItems } = require("./api/syscomAPI")
 
 const app = express()
 
-let token
 app.get("", (req,res)=>{
   res.send("Main route")
 })
@@ -23,9 +21,10 @@ app.get("/categories", async(req,res)=>{
   const response = await getCategories()
   res.send(response)
 })
-app.get("/categories/:id",(req,res)=>{
+app.get("/categories/:id",async(req,res)=>{
   const categoryID = req.params.id
-  
+  const response = await getCategoryItems(categoryID)
+  console.log(response)
   res.end()
 })
 app.listen(config.PORT, ()=>{
