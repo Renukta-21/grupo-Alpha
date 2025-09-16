@@ -1,6 +1,6 @@
 const express = require("express")
 const config = require("../server/config")
-const { getCategories, setAPIToken, getCategoryItems } = require("./api/syscomAPI")
+const { getCategories, getCategoryItems } = require("./api/syscomAPI")
 
 const app = express()
 
