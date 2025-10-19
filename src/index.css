@@ -1,1 +1,19 @@
 @import "tailwindcss";
+
+@theme{
+    --color-logoWhite:#E7E6E2;
+    --color-ButtonGray:#F8F9FA;
+    --color-SuperPrice:#12B76A;
+    --color-SuperPrice-Hover:#157347;
+    --color-openRegister: #F04438;
+    --color-openRegister-Hover: #BB2D3B;
+    --color-mainBlue:#004C91;
+    --color-mainBlue-Hover:#0B5ED7;
+    --color-lightGray:#F8F9FA;
+    --color-gray-Hover:#F8F9FA;
+}
+@layer components{
+    .subnavbar button{
+        @apply flex items-center h-full cursor-pointer px-4 gap-2;
+    }
+}

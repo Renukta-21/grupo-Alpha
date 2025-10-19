@@ -1,6 +1,6 @@
 const express = require("express")
 const config = require("../server/config")
-const { getCategories, getCategoryItems } = require("./api/syscomAPI")
+const { getCategories, getCategoryItems,getBrands } = require("./api/syscomAPI")
 const cors = require('cors')
 
 const app = express()
@@ -12,14 +12,17 @@ app.get("", (req,res)=>{
 
 app.get("/categories", async(req,res)=>{
   const response = await getCategories()
-  console.log(response)
+  /* console.log(response) */
   res.send(response)
 })
 app.get("/categories/:id",async(req,res)=>{
   const categoryID = req.params.id
   const response = await getCategoryItems(categoryID)
-  console.log(response)
-  res.end()
+  res.send(response)
+})
+app.get("/brands",async(req,res)=>{
+  const response = await getBrands()
+  res.send(response)
 })
 app.listen(config.PORT, ()=>{
   console.log(`Server started on ${config.PORT}`)

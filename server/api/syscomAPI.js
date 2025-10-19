@@ -37,5 +37,15 @@ const getCategoryItems = async(categoryID)=>{
     }
 
 }
+const getBrands = async()=>{
+    try {
+        await setAPIToken()
+        const response = await apiInstance.get(`/marcas	`)
+        return response.data
+    } catch (error) {
+        return error.response.data
+    }
 
-module.exports = {getCategories, setAPIToken, getCategoryItems}
+}
+
+module.exports = {getCategories, setAPIToken, getCategoryItems, getBrands}
