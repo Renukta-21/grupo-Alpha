@@ -15,7 +15,7 @@ const CategoryCard = ({
   }
   return (
     <div
-      className=" bg-white max-w-[270px] cursor-pointer"
+      className=" bg-white  max-w-[270px] max-sm:max-w-full cursor-pointer"
       onClick={() => handleCategoryDisplay(id)}
     >
       <div className='flex p-4 cursor-pointer hover:bg-gray-Hover'>

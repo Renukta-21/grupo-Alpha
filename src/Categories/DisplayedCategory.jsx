@@ -28,7 +28,7 @@ const DisplayedCategory = ({ categories, retrieveByCategory, byCategory }) => {
 
       {/* Contenido derecho */}
       <div
-        className={`bg-white flex-grow flex ${
+        className={`bg-white flex-grow flex max-sm:hidden ${
           !selectedCategory && 'items-center justify-center flex-nowrap'
         }`}
       >
