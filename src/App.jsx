@@ -9,13 +9,35 @@ function App() {
   const [byCategory, setByCategory] = useState([])
 
   useEffect(() => {
-    const fetchData = async () => await retrieveCategories()
-    fetchData()
-  }, [])
+  const fetchData = async () => await retrieveCategories()
+  fetchData()
+}, [])
 
-  useEffect(() => {
-    
-  }, [byCategory])
+useEffect(() => {
+  if (categories.length > 0) {
+    const fetchAllSubcategories = async () => {
+      try {
+        const requests = categories.map(cat =>
+          apiInstance.get(`/categories/${cat.id}`)
+        )
+
+        const responses = await Promise.all(requests)
+
+        const allData = responses.map(res => ({
+          id: res.data.id,
+          subcategorias: res.data.subcategorias
+        }))
+
+        setByCategory(allData)
+      } catch (error) {
+        console.log(error.response?.data || error.message)
+      }
+    }
+
+    fetchAllSubcategories()
+  }
+}, [categories])
+
 
   const retrieveCategories = async () => {
     try {
@@ -44,17 +66,18 @@ function App() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <div className='hidden'>
+      <div className='hidden md:block'>
         <Navbar categories={categories} />
       </div>
-      <div className='block'>
-        <NavbarOnSmall categories={categories} />
+      <div className='block md:hidden'>
+        <NavbarOnSmall categories={categories} byCategory={byCategory}/>
       </div>
-      <DisplayedCategory
+      <div className='hidden md:block'>
+        <DisplayedCategory
         categories={categories}
         byCategory={byCategory}
-        retrieveByCategory={retrieveByCategory}
       />
+      </div>
     </div>
   )
 }

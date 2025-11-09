@@ -10,7 +10,11 @@
     --color-mainBlue:#004C91;
     --color-mainBlue-Hover:#0B5ED7;
     --color-lightGray:#F8F9FA;
-    --color-gray-Hover:#F8F9FA;
+    --color-gray-Hover:#F8F9FA; 
+    --color-shoppingOrange: #F59E0B;
+    --color-MainBlue:#101828;
+    --color-secondayBlue:#1E2939;
+    --color-lightIconBlue:#51A2FF;
 }
 @layer components{
     .subnavbar button{

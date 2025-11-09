@@ -11,8 +11,11 @@ import { CgProfile } from 'react-icons/cg'
 import { IoCartOutline } from 'react-icons/io5'
 import { FaFireAlt } from 'react-icons/fa'
 import { MdOutlineShoppingCart } from 'react-icons/md'
-
+import { CiSearch } from 'react-icons/ci'
+import { IoMdClose } from 'react-icons/io'
 import logo from './assets/logo.jpeg'
+import { useEffect, useState } from 'react'
+import { CategoryMenuCard } from './Categories/CategoryCard'
 
 function Navbar() {
   return (
@@ -31,7 +34,7 @@ function SubNavbar() {
   return (
     <div className="h-[66px] bg-mainBlue">
       <ul className="h-full flex subnavbar">
-        <li className="h-full">
+        <li className="h-full ">
           <button className="flex bg-ButtonGray hover:cursor-pointer max-w-fit">
             <GiHamburgerMenu />
             Todos los productos
@@ -74,45 +77,87 @@ function SubNavbar() {
   )
 }
 
-/* function NavbarOnSmall() {
-  return (
-    <div className="h-[70px] bg-logoWhite flex justify-between w-full px-3">
-      <div className="flex">
-        <img src={logo} alt="" className="h-full" />
-      </div>
-      <div className="flex items-center text-3xl gap-3">
-        <IoPricetagsOutline />
-        <FiMessageSquare />
-        <CgProfile />
-        <IoCartOutline />
-      </div>
-    </div>
-  )
-} */
 
-export const NavbarOnSmall = () => {
+export const NavbarOnSmall = ({ categories, byCategory }) => {
+  const [menuVisible, setMenuVisible] = useState(true)
+  const [subMenuVisible, setSubMenuVisible] = useState(false)
+
+  const [currentCategory, setCurrentCategory] = useState(null)
+  useEffect(() => {
+    
+  }, [])
+  
   return (
     <div>
-      <div className="px-5 flex justify-between">
-        <button>
-          <GiHamburgerMenu />
-        </button>
-        <div className="h-[50px] bg-logoWhite flex items-center">
-          <img src={logo} alt="" className="h-full" />
+      <div>
+        {menuVisible && (
+          <div className="absolute inset-0 bg-secondayBlue">
+            <div className="bg-MainBlue py-5 px-3 flex justify-between items-center border-b-[1px] border-white box">
+              <h2 className="text-white text-xl font-semibold">Categorías</h2>
+              <button onClick={() => setMenuVisible(!menuVisible)}>
+                <IoMdClose className="text-gray-400 text-xl" />
+              </button>
+            </div>
+            <div>
+             
+              {categories.map((c) => (
+                <CategoryMenuCard
+                  key={c.id}
+                  id={c.id}
+                  nombre={c.nombre}
+                  nivel={c.nivel}
+                  harcodedStyle=" text-white text-[14px] font-semibold"
+                  categories={categories}
+                  currentCategory={currentCategory}
+                  setCurrentCategory={setCurrentCategory}
+                  byCategory={byCategory}
+                />
+              ))}
+            </div>
+          </div>
+        )}
+        <div className="px-5 flex bg-logoWhite justify-between">
+          <button onClick={() => setMenuVisible(true)}>
+            <GiHamburgerMenu />
+          </button>
+          <div className="h-[50px] bg-logoWhite flex items-center">
+            <img src={logo} alt="" className="h-full" />
+          </div>
+          <div className="text-[17px] flex items-center gap-5">
+            <button>
+              <FaFireAlt />
+            </button>
+            <button>
+              <CgProfile />
+            </button>
+            <button className="bg-shoppingOrange p-1 rounded-md">
+              <MdOutlineShoppingCart />
+            </button>
+          </div>
         </div>
-        <div className='text-xl flex items-center gap-3'>
-          <button>
-            <FaFireAlt />
-          </button>
-          <button>
-            <CgProfile />
-          </button>
-          <button>
-            <MdOutlineShoppingCart />
-          </button>
-        </div>
+      </div>
+      <SearchBar />
+    </div>
+  )
+}
+
+function SearchBar() {
+  return (
+    <div className="w-full max-h-[50px] bg-logoWhite py-2 px-4">
+      <div
+        className="flex border border-black rounded-2xl items-center mx-auto py-1 px-2 
+                      focus-within:border-blue-400 focus-within:shadow-[0_0_10px_1px_rgba(0,123,255,0.5)] 
+                      transition duration-200"
+      >
+        <CiSearch className="mx-3 text-gray-600" />
+        <input
+          type="text"
+          placeholder="Buscar..."
+          className="focus:outline-none w-full"
+        />
       </div>
     </div>
   )
 }
+
 export default Navbar

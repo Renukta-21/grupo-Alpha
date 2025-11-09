@@ -21,6 +21,7 @@ const DisplayedCategory = ({ categories, retrieveByCategory, byCategory }) => {
             nombre={c.nombre}
             nivel={c.nivel}
             retrieveByCategory={retrieveByCategory}
+            categories={categories}
             setSelectedCategory={setSelectedCategory}
           />
         ))}
