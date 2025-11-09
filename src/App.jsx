@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import Navbar from './Navbar'
+import Navbar, { NavbarOnSmall } from './Navbar'
 import apiInstance from './apiRoutes.js'
 import DisplayedCategory from './Categories/DisplayedCategory.jsx'
 /* import mockup from "./categoryMockup.json" */
@@ -44,7 +44,12 @@ function App() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Navbar categories={categories} />
+      <div className='hidden'>
+        <Navbar categories={categories} />
+      </div>
+      <div className='block'>
+        <NavbarOnSmall categories={categories} />
+      </div>
       <DisplayedCategory
         categories={categories}
         byCategory={byCategory}

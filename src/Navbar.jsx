@@ -9,26 +9,27 @@ import { IoPricetagsOutline } from 'react-icons/io5'
 import { FiMessageSquare } from 'react-icons/fi'
 import { CgProfile } from 'react-icons/cg'
 import { IoCartOutline } from 'react-icons/io5'
+import { FaFireAlt } from 'react-icons/fa'
+import { MdOutlineShoppingCart } from 'react-icons/md'
 
 import logo from './assets/logo.jpeg'
 
 function Navbar() {
   return (
     <div>
-      <div className="hidden md:block">
+      <div className="">
         <div className="h-[70px] bg-logoWhite flex px-3 items-center">
           <img src={logo} alt="" className="h-full" />
         </div>
-        <SubNavbar/>
+        <SubNavbar />
       </div>
     </div>
   )
 }
 
-
 function SubNavbar() {
   return (
-    <div className="h-[66px] bg-mainBlue max-sm:hidden">
+    <div className="h-[66px] bg-mainBlue">
       <ul className="h-full flex subnavbar">
         <li className="h-full">
           <button className="flex bg-ButtonGray hover:cursor-pointer max-w-fit">
@@ -73,13 +74,10 @@ function SubNavbar() {
   )
 }
 
-function NavbarOnSmall() {
+/* function NavbarOnSmall() {
   return (
     <div className="h-[70px] bg-logoWhite flex justify-between w-full px-3">
       <div className="flex">
-        <button className={`hidden max-sm:block text-xl`}>
-          <GiHamburgerMenu />
-        </button>
         <img src={logo} alt="" className="h-full" />
       </div>
       <div className="flex items-center text-3xl gap-3">
@@ -87,6 +85,32 @@ function NavbarOnSmall() {
         <FiMessageSquare />
         <CgProfile />
         <IoCartOutline />
+      </div>
+    </div>
+  )
+} */
+
+export const NavbarOnSmall = () => {
+  return (
+    <div>
+      <div className="px-5 flex justify-between">
+        <button>
+          <GiHamburgerMenu />
+        </button>
+        <div className="h-[50px] bg-logoWhite flex items-center">
+          <img src={logo} alt="" className="h-full" />
+        </div>
+        <div className='text-xl flex items-center gap-3'>
+          <button>
+            <FaFireAlt />
+          </button>
+          <button>
+            <CgProfile />
+          </button>
+          <button>
+            <MdOutlineShoppingCart />
+          </button>
+        </div>
       </div>
     </div>
   )
