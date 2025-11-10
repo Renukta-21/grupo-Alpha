@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const apiInstance = axios.create({
-  baseURL: 'http://localhost:4006',
+  baseURL: 'https://grupo-alpha-6.onrender.com/',
 })
 
 export default apiInstance
