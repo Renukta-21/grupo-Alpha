@@ -2,7 +2,7 @@ const axios = require("axios")
 const { getToken } = require("./auth")
 
 const apiInstance = axios.create({
-    baseURL:"https://grupo-alpha-5.onrender.com/"
+    baseURL:"https://developers.syscom.mx/api/v1"
 })
 
 
