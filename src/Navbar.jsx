@@ -79,7 +79,7 @@ function SubNavbar() {
 
 
 export const NavbarOnSmall = ({ categories, byCategory }) => {
-  const [menuVisible, setMenuVisible] = useState(true)
+  const [menuVisible, setMenuVisible] = useState(false)
   const [subMenuVisible, setSubMenuVisible] = useState(false)
 
   const [currentCategory, setCurrentCategory] = useState(null)
