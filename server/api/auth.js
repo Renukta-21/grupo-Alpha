@@ -9,6 +9,7 @@ const payload=`client_id=${process.env.CLIENT_ID}&client_secret=${process.env.SE
 const getToken = async()=>{
     try {
         const tokenResponse = await authInstance.post("", payload)
+        console.log('GOT TOKEN')
         return tokenResponse.data
     } catch (error) {
         return error.response.data
